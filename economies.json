@@ -1,0 +1,6 @@
+[
+  { "countryId": 840, "countryName": "United States", "logoName": "usa", "width": 120, "height": 63.2, "stroke": "#f00"   },
+  { "countryId": 392, "countryName": "Japan", "logoName": "japan", "width": 64, "height": 42.65, "stroke": "#f00"  },
+  { "countryId": 826, "countryName": "United Kingdom", "logoName": "uk", "width": 60, "height": 30, "stroke": "#012169" },
+  { "countryId": 156, "countryName": "China", "logoName": "china", "width": 145, "height": 96.75, "stroke": "#ff0"}
+]
