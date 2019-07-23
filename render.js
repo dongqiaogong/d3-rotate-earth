@@ -1,4 +1,5 @@
 export default function render(country, svg, data, path, projection) {
+  console.log(projection.scale());
   svg.selectAll("*").remove();
   const sphere_g = svg.append("g").attr("class", "sphere");
   sphere_g

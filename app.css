@@ -1,48 +1,47 @@
 html {
   height: 100%;
 }
+
 body {
   background-color: #454545;
   height: 100%;
   margin: 0;
   overflow: hidden;
 }
+
 .sphere {
   opacity: 0.7;
 }
+
 .land path {
   opacity: 0.7;
 }
+
 .city-name {
   font-size: 20px;
   color: white;
 }
+
 .country {
   opacity: 1;
   fill: #fff;
 }
+
 .country path {
-  /* fill: #fff; */
-  /* stroke: rgb(18, 141, 38); */
   stroke-width: 1.5;
   box-shadow: 0 40px 80px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-/* .logo {
-  width: 100px;
-} */
+
 #chart-wrapper {
   position: absolute;
   overflow: hidden;
-  /* width: 0; */
-  /* height: 0; */
   color: white;
-  /* border: 1px red solid; */
   background-color: #22222290;
   border-radius: 2px;
   -webkit-box-shadow: 0 2px 8px #222;
   box-shadow: 0 2px 8px #222;
- 
 }
+
 .chart {
   width: 600px;
   height: 260px;
@@ -50,8 +49,6 @@ body {
 .chart tr {
   height: 15px;
 }
-
-
 
 #img-usa {
   opacity: 0.3;

@@ -29,20 +29,6 @@ class Versor {
     const i = Versor.interpolate(Versor.fromAngles(a), Versor.fromAngles(b));
     return t => Versor.toAngles(i(t));
   }
-  static interpolateLinear([a1, b1, c1, d1], [a2, b2, c2, d2]) {
-    (a2 -= a1), (b2 -= b1), (c2 -= c1), (d2 -= d1);
-    const x = new Array(4);
-    return t => {
-      const l = Math.hypot(
-        (x[0] = a1 + a2 * t),
-        (x[1] = b1 + b2 * t),
-        (x[2] = c1 + c2 * t),
-        (x[3] = d1 + d2 * t)
-      );
-      (x[0] /= l), (x[1] /= l), (x[2] /= l), (x[3] /= l);
-      return x;
-    };
-  }
   static interpolate([a1, b1, c1, d1], [a2, b2, c2, d2]) {
     let dot = a1 * a2 + b1 * b2 + c1 * c2 + d1 * d2;
     if (dot < 0) (a2 = -a2), (b2 = -b2), (c2 = -c2), (d2 = -d2), (dot = -dot);

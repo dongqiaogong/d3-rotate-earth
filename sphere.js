@@ -7,26 +7,16 @@ async function getWorld() {
     "https://cdn.jsdelivr.net/npm/world-atlas@1/world/110m.json"
   );
   const data = {};
-  // console.log(world);
   data.land = topojson.feature(world, world.objects.land);
-  // console.log(data.land);
   data.borders = topojson.mesh(
     world,
     world.objects.countries,
     (a, b) => a !== b
   );
   data.countries = topojson.feature(world, world.objects.countries).features;
-  console.log(topojson.feature(world, world.objects.countries));
-  const names = new Map(
-    await d3.tsv(
-      "https://cdn.jsdelivr.net/npm/world-atlas@1/world/110m.tsv",
-      ({ iso_n3, name_long }) => [iso_n3, name_long]
-    )
-  );
-  console.log(names);
+
   data.sphere = { type: "Sphere" };
-  const tilt = 0,
-    svg_width = document.body.clientWidth,
+  const svg_width = document.body.clientWidth,
     svg_height = document.body.clientHeight,
     init_diameter = svg_height / 2,
     init_margin_left = (svg_width - init_diameter) / 2,
@@ -36,20 +26,12 @@ async function getWorld() {
     ),
     ext_margin_left = (svg_width - ext_diameter) / 2,
     ext_margin_top = (svg_height - ext_diameter) / 2;
-  console.log(
-    svg_width,
-    svg_height,
-    init_diameter,
-    ext_diameter,
-    init_margin_left,
-    init_margin_top
-  );
 
   let name = "";
 
   const projection = d3
     .geoOrthographic()
-    .center([105, 40])
+    .center([0, 0])
     .fitExtent(
       [
         [init_margin_left, init_margin_top],
@@ -111,18 +93,16 @@ async function getWorld() {
     .domain([0, 1])
     .range([[600, 260], [0, 0]]);
 
+
+  
   for (const city of data.cities) {
     data.city = city;
     const country = city.country;
     console.log(country);
     
     (p1 = p2), (p2 = d3.geoCentroid(country));
-    // (p1 = p2), (p2 = [city.lon, city.lat]);
-    (r1 = r2), (r2 = [-p2[0], tilt - p2[1], 0]);
-    // const ip = d3.geoInterpolate(p1, p2);
+    (r1 = r2), (r2 = [-p2[0], - p2[1], 0]);
     const iv = Versor.interpolateAngles(r1, r2);
-    
-    
     
     render(country, svg, data, path, projection);
     await d3
